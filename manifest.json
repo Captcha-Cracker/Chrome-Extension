@@ -2,10 +2,11 @@
   "manifest_version": 3,
   "name": "Capture Extension",
   "version": "1.0",
-  "permissions": ["activeTab"],
   "action": {
     "default_popup": "popup.html"
   },
+  "permissions": ["activeTab", "scripting", "declarativeContent", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "background": {
     "service_worker": "background.js"
   }
