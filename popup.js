@@ -1,5 +1,3 @@
-import * as tf from "tensorflow.js";
-
 document.addEventListener("DOMContentLoaded", async function () {
   const captureButton = document.getElementById("captureButton");
   const imageContainer = document.getElementById("imageContainer");
@@ -72,5 +70,5 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   const modelPath = "captcha_recognition_model.h5";
-  const model = await tf.loadLayersModel(modelPath);
+  // const model = await tf.loadLayersModel(modelPath);
 });
