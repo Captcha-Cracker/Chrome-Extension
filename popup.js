@@ -51,6 +51,12 @@ document.addEventListener("DOMContentLoaded", async function () {
           imageContainer.innerHTML = "";
           imageContainer.appendChild(capturedImage);
 
+          // 이미지 다운로드 링크 생성
+          const link = document.createElement("a");
+          link.href = capturedImageUrl;
+          link.download = "captured_image.png";
+          link.click(); // 자동으로 다운로드됨
+
           resultButton.addEventListener("click", function () {
             // 이미지를 모델에 전달하고 결과를 팝업 창에 출력하는 부분입니다.
             // const tensor = tf.browser.fromPixels(capturedImage).expandDims();
