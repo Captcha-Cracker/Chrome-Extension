@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Capture Extension</title>
+    <link rel="stylesheet" href="runtime/pyscript.css" />
+    <script defer src="runtime/pyscript.js"></script>
+    <py-config> [[runtimes]] src = "runtime/pyodide.js" name = "pyodide-0.21.3" lang = "python" </py-config>
     <script src="popup.js"></script>
     <style>
       body {
@@ -14,5 +17,6 @@
     <button id="captureButton">Capture</button>
     <div id="imageContainer"></div>
     <button id="resultButton">result</button>
+    <py-script> print("inner") </py-script>
   </body>
 </html>

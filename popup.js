@@ -58,14 +58,13 @@ document.addEventListener("DOMContentLoaded", async function () {
           link.click(); // 자동으로 다운로드됨
 
           resultButton.addEventListener("click", function () {
-            // 이미지를 모델에 전달하고 결과를 팝업 창에 출력하는 부분입니다.
-            // const tensor = tf.browser.fromPixels(capturedImage).expandDims();
-            // const prediction = model.predict(tensor);
-            // const result = prediction.dataSync();
-            // document.write(`<h1>Prediction Result: ${result}</h1>`);
             document.write(`<h1>hello</h1>`);
+            // var pythonScript = document.createElement("script");
+            // pythonScript.src = "/Chrome-Extension/hello.py";
+            // document.body.appendChild(pythonScript);
           });
         };
+
         image.src = screenshotUrl;
       });
 
@@ -74,7 +73,4 @@ document.addEventListener("DOMContentLoaded", async function () {
       document.body.style.cursor = "default";
     }
   });
-
-  const modelPath = "captcha_recognition_model.h5";
-  // const model = await tf.loadLayersModel(modelPath);
 });
