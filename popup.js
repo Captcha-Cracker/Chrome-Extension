@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const captureButton = document.getElementById("captureButton");
   const imageContainer = document.getElementById("imageContainer");
+  const resultButton = document.getElementById("resultButton");
   let isCapturing = false;
   let startX, startY;
 
@@ -49,7 +50,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
           imageContainer.innerHTML = "";
           imageContainer.appendChild(capturedImage);
+
+          // 이미지 다운로드 링크 생성
+          const link = document.createElement("a");
+          link.href = capturedImageUrl;
+          link.download = "captured_image.png";
+          link.click(); // 자동으로 다운로드됨
+
+          resultButton.addEventListener("click", function () {
+            document.write(`<h1>hello</h1>`);
+            // var pythonScript = document.createElement("script");
+            // pythonScript.src = "/Chrome-Extension/hello.py";
+            // document.body.appendChild(pythonScript);
+            
+          });
         };
+
         image.src = screenshotUrl;
       });
 
