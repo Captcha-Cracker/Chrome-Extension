@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             // var pythonScript = document.createElement("script");
             // pythonScript.src = "/Chrome-Extension/hello.py";
             // document.body.appendChild(pythonScript);
+            
           });
         };
 
