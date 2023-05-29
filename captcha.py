@@ -2,8 +2,6 @@ import os
 import cv2
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-
 from pathlib import Path
 from collections import Counter
 from sklearn.model_selection import train_test_split
@@ -14,6 +12,19 @@ from tensorflow.keras import layers
 
 
 def generate_arrays(df, resize=True, img_height=50, img_width=200):
+    """Generates image array and labels array from a dataframe.
+
+    Args:
+        df: dataframe from which we want to read the data
+        resize (bool)    : whether to resize images or not
+        img_weidth (int): width of the resized images
+        img_height (int): height of the resized images
+
+    Returns:
+        images (ndarray): grayscale images
+        labels (ndarray): corresponding encoded labels
+    """
+
     num_items = len(df)
     images = np.zeros((num_items, img_height, img_width), dtype=np.float32)
     labels = [0] * num_items
@@ -27,6 +38,8 @@ def generate_arrays(df, resize=True, img_height=50, img_width=200):
 
         img = (img / 255.).astype(np.float32)
         label = df["label"][i]
+
+        # Add only if it is a valid captcha
         #if is_valid_captcha(label):
         images[i, :, :] = img
         labels[i] = label
@@ -232,7 +245,7 @@ def build_model(opt, lr=0.001):
 '''
 
 # test 이미지가 저장된 디렉토리 주소 입력
-test_data_dir = Path("")
+test_data_dir = Path("C:\\Users\\choo0\\Downloads\\")
 images = list(test_data_dir.glob("*.png"))
 images += list(test_data_dir.glob("*.jpg"))
 print("Number of images found: ", len(images))
@@ -310,7 +323,7 @@ test_data_generator = DataGenerator(data=test_data,
                                       )
 
 # 모델 로드
-model_addr = '../model.h5' # 모델 주소 입력
+model_addr = '"C:\\Users\\choo0\\Documents\\Repository\\Captcha-Recognition-Chrome-Extension\\Chrome-Extension\\captcha_recognition_32000_model.h5"' # 모델 주소 입력
 test_model = tf.keras.models.load_model(model_addr, custom_objects={"CTCLayer": CTCLayer})
 
 prediction_model = keras.models.Model(test_model.get_layer(name='input_data').input,
