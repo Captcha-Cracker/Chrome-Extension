@@ -1,3 +1,6 @@
+const modelPath = "captcha_recognition_model.h5";
+const model = await tf.loadLayersModel(modelPath);
+
 document.addEventListener("DOMContentLoaded", function () {
   const captureButton = document.getElementById("captureButton");
   const imageContainer = document.getElementById("imageContainer");
@@ -49,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
           imageContainer.innerHTML = "";
           imageContainer.appendChild(capturedImage);
+
+          // test start
+
+          // test end
         };
         image.src = screenshotUrl;
       });
